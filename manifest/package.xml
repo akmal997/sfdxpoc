@@ -4,5 +4,9 @@
         <members>ContactController</members>
         <name>ApexClass</name>
     </types>
+     <types>
+        <members>AccountController</members>
+        <name>ApexClass</name>
+    </types>
     <version>44.0</version>
 </Package>
