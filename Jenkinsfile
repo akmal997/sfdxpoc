@@ -24,6 +24,11 @@ node {
         checkout scm
     }
 
+     stage('build triggers') {
+        // enabled CI
+        properties([pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
+    }
+
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Deploye Code') {
             if (isUnix()) {
