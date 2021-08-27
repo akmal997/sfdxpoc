@@ -1,0 +1,143 @@
+{
+  "summary": {
+    "outcome": "Passed",
+    "testsRan": 2,
+    "passing": 2,
+    "failing": 0,
+    "skipped": 0,
+    "passRate": "100%",
+    "failRate": "0%",
+    "testStartTime": "Thu Aug 26 2021 11:55:35 AM",
+    "testExecutionTime": "862 ms",
+    "testTotalTime": "862 ms",
+    "commandTime": "565 ms",
+    "hostname": "https://ability-computing-3375-dev-ed.cs76.my.salesforce.com",
+    "orgId": "00D9D000000189dUAA",
+    "username": "test-nzr6z3n1rzub@example.com",
+    "testRunId": "7079D00000Rdtr6",
+    "userId": "0059D000002t5zvQAA",
+    "testRunCoverage": "50%",
+    "orgWideCoverage": "50%"
+  },
+  "tests": [
+    {
+      "Id": "07M9D000003VeCuUAK",
+      "QueueItemId": "7099D000000iPQkQAM",
+      "StackTrace": null,
+      "Message": null,
+      "AsyncApexJobId": "7079D00000Rdtr6QAB",
+      "MethodName": "testContactClass",
+      "Outcome": "Pass",
+      "ApexClass": {
+        "Id": "01p9D000001xxM7QAI",
+        "Name": "ContactControllerTest",
+        "NamespacePrefix": null
+      },
+      "RunTime": 355,
+      "FullName": "ContactControllerTest.testContactClass"
+    },
+    {
+      "Id": "07M9D000003VeCpUAK",
+      "QueueItemId": "7099D000000iPQlQAM",
+      "StackTrace": null,
+      "Message": null,
+      "AsyncApexJobId": "7079D00000Rdtr6QAB",
+      "MethodName": "testfindAccounts",
+      "Outcome": "Pass",
+      "ApexClass": {
+        "Id": "01p9D000001xxM5QAI",
+        "Name": "AccountControllerTest",
+        "NamespacePrefix": null
+      },
+      "RunTime": 507,
+      "FullName": "AccountControllerTest.testfindAccounts"
+    }
+  ],
+  "coverage": {
+    "coverage": [
+      {
+        "id": "01p9D000001xxM6QAI",
+        "name": "ContactController",
+        "totalLines": 7,
+        "lines": {
+          "4": 1,
+          "5": 1,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "15": 0,
+          "16": 0
+        },
+        "totalCovered": 2,
+        "coveredPercent": 29
+      },
+      {
+        "id": "01p9D000001xxM4QAI",
+        "name": "AccountController",
+        "totalLines": 3,
+        "lines": {
+          "4": 1,
+          "5": 1,
+          "6": 1
+        },
+        "totalCovered": 3,
+        "coveredPercent": 100
+      }
+    ],
+    "records": [
+      {
+        "ApexTestClass": {
+          "Id": "07M9D000003VeCuUAK",
+          "Name": "ContactControllerTest"
+        },
+        "Coverage": {
+          "coveredLines": [
+            4,
+            5
+          ],
+          "uncoveredLines": [
+            9,
+            10,
+            11,
+            15,
+            16
+          ]
+        },
+        "TestMethodName": "testContactClass",
+        "NumLinesCovered": 2,
+        "ApexClassOrTrigger": {
+          "Id": "01p9D000001xxM6QAI",
+          "Name": "ContactController"
+        },
+        "NumLinesUncovered": 5
+      },
+      {
+        "ApexTestClass": {
+          "Id": "07M9D000003VeCpUAK",
+          "Name": "AccountControllerTest"
+        },
+        "Coverage": {
+          "coveredLines": [
+            4,
+            5,
+            6
+          ],
+          "uncoveredLines": []
+        },
+        "TestMethodName": "testfindAccounts",
+        "NumLinesCovered": 3,
+        "ApexClassOrTrigger": {
+          "Id": "01p9D000001xxM4QAI",
+          "Name": "AccountController"
+        },
+        "NumLinesUncovered": 0
+      }
+    ],
+    "summary": {
+      "totalLines": 10,
+      "coveredLines": 5,
+      "orgWideCoverage": "50%",
+      "testRunCoverage": "50%"
+    }
+  }
+}

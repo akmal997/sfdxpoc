@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2021-08-26T11:55:35.000Z" hostname="https://ability-computing-3375-dev-ed.cs76.my.salesforce.com" tests="2" failures="0"  errors="0"  time="0.86">
+        <properties>
+            <property name="outcome" value="Successful"/>
+            <property name="testsRan" value="2"/>
+            <property name="passing" value="2"/>
+            <property name="failing" value="0"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="failRate" value="0%"/>
+            <property name="testStartTime" value="Thu Aug 26 2021 11:55:35 AM"/>
+            <property name="testExecutionTime" value="0.86 s"/>
+            <property name="testTotalTime" value="0.86 s"/>
+            <property name="commandTime" value="0.56 s"/>
+            <property name="hostname" value="https://ability-computing-3375-dev-ed.cs76.my.salesforce.com"/>
+            <property name="orgId" value="00D9D000000189dUAA"/>
+            <property name="username" value="test-nzr6z3n1rzub@example.com"/>
+            <property name="testRunId" value="7079D00000Rdtr6"/>
+            <property name="userId" value="0059D000002t5zvQAA"/>
+            <property name="coveredLines" value="5"/>
+            <property name="testRunCoverage" value="50%"/>
+            <property name="orgWideCoverage" value="50%"/>
+        </properties>
+        <testcase name="testContactClass" classname="ContactControllerTest" time="0.35">
+        </testcase>
+        <testcase name="testfindAccounts" classname="AccountControllerTest" time="0.51">
+        </testcase>
+    </testsuite>
+</testsuites>

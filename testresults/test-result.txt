@@ -1,0 +1,27 @@
+=== Test Summary
+NAME                 VALUE                        
+───────────────────  ─────────────────────────────
+Outcome              Passed                       
+Tests Ran            2                            
+Pass Rate            100%                         
+Fail Rate            0%                           
+Skip Rate            0%                           
+Test Run Id          7079D00000Rdtr6              
+Test Execution Time  862 ms                       
+Org Id               00D9D000000189dUAA           
+Username             test-nzr6z3n1rzub@example.com
+Org Wide Coverage    50%                          
+
+
+=== Test Results
+TEST NAME                               OUTCOME  MESSAGE  RUNTIME (MS)
+──────────────────────────────────────  ───────  ───────  ────────────
+ContactControllerTest.testContactClass  Pass              355         
+AccountControllerTest.testfindAccounts  Pass              507         
+
+
+=== Apex Code Coverage by Class
+CLASSES            PERCENT  UNCOVERED LINES
+─────────────────  ───────  ───────────────
+ContactController  29%      9,10,11,15,16  
+AccountController  100%                    

@@ -24,6 +24,10 @@ node {
         checkout scm
     }
 
+    stage('Build trigger'){
+    properties([pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
+    }
+
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Deploye Code') {
            

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01p9D000001xxM6QAI",
+    "name": "ContactController",
+    "totalLines": 7,
+    "lines": {
+      "4": 1,
+      "5": 1,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "15": 0,
+      "16": 0
+    },
+    "totalCovered": 2,
+    "coveredPercent": 29
+  },
+  {
+    "id": "01p9D000001xxM4QAI",
+    "name": "AccountController",
+    "totalLines": 3,
+    "lines": {
+      "4": 1,
+      "5": 1,
+      "6": 1
+    },
+    "totalCovered": 3,
+    "coveredPercent": 100
+  }
+]
