@@ -30,22 +30,23 @@
   "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes": {
     "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes",
     "isDirectory": true,
-    "modifiedTime": 1629977165679,
-    "changeTime": 1629977165679,
-    "contentHash": "23c3a3dd006847a055eec6a6aa885ed478b40555",
+    "modifiedTime": 1630403377185,
+    "changeTime": 1630403377185,
+    "contentHash": "6c65c81ad46d97a767332cd681e8bd7c2169a0b6",
     "state": "u",
     "package": "force-app",
     "deferContentHash": true
   },
   "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountController.cls": {
     "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountController.cls",
-    "size": 290,
-    "modifiedTime": 1629200787412,
-    "changeTime": 1629200787412,
-    "contentHash": "1839f6c5ec30bc633594ad282e118c2a626a9711",
+    "size": 298,
+    "modifiedTime": 1630081178770,
+    "changeTime": 1630081178770,
+    "contentHash": "d67eb07393b346f670a473a03c879db8eb137d0f",
     "state": "u",
     "package": "force-app",
-    "metadataType": "ApexClass"
+    "metadataType": "ApexClass",
+    "deferContentHash": true
   },
   "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountController.cls-meta.xml": {
     "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountController.cls-meta.xml",
@@ -57,17 +58,6 @@
     "state": "u",
     "package": "force-app",
     "metadataType": "ApexClass"
-  },
-  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest.cls": {
-    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest.cls",
-    "size": 406,
-    "modifiedTime": 1629978435809,
-    "changeTime": 1629978435809,
-    "contentHash": "a86a21657ff49ac5947022b1790628830241716a",
-    "state": "u",
-    "package": "force-app",
-    "metadataType": "ApexClass",
-    "deferContentHash": true
   },
   "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactController.cls": {
     "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactController.cls",
@@ -92,10 +82,10 @@
   },
   "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls": {
     "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls",
-    "size": 872,
-    "modifiedTime": 1629978745241,
-    "changeTime": 1629978745241,
-    "contentHash": "3c7d76cfa4a9618a091e602d460094c63ba966e3",
+    "size": 887,
+    "modifiedTime": 1630403053687,
+    "changeTime": 1630403053687,
+    "contentHash": "dc6ffbe1b36e056e9f497ed11181fbd493ed6de1",
     "state": "u",
     "package": "force-app",
     "metadataType": "ApexClass",
@@ -111,23 +101,55 @@
     "isWorkspace": true,
     "deferContentHash": true
   },
-  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest.cls-meta.xml": {
-    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest.cls-meta.xml",
-    "size": 174,
-    "modifiedTime": 1628749565256,
-    "changeTime": 1629977105160,
-    "contentHash": "ab3ac94968e57930b88820ab5438fa820ed36730",
+  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls-meta.xml": {
+    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls-meta.xml",
+    "size": 179,
+    "modifiedTime": 1630081178772,
+    "changeTime": 1630081178772,
+    "contentHash": "463a780dc1b11f5d645b2a49558ed28551f48927",
+    "isMetadataFile": true,
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "ApexClass",
+    "deferContentHash": true
+  },
+  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest1.cls": {
+    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest1.cls",
+    "size": 419,
+    "modifiedTime": 1630403358013,
+    "changeTime": 1630403358016,
+    "contentHash": "ccd16901d1c7c4e0ddd4116f5cf60e3949d7adfe",
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "ApexClass"
+  },
+  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest1.cls-meta.xml": {
+    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTest1.cls-meta.xml",
+    "size": 179,
+    "modifiedTime": 1630403377184,
+    "changeTime": 1630403377188,
+    "contentHash": "463a780dc1b11f5d645b2a49558ed28551f48927",
     "isMetadataFile": true,
     "state": "u",
     "package": "force-app",
     "metadataType": "ApexClass"
   },
-  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls-meta.xml": {
-    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\ContactControllerTest.cls-meta.xml",
-    "size": 174,
-    "modifiedTime": 1628749565325,
-    "changeTime": 1629977165679,
-    "contentHash": "ab3ac94968e57930b88820ab5438fa820ed36730",
+  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTestRuntimeError.cls": {
+    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTestRuntimeError.cls",
+    "size": 747,
+    "modifiedTime": 1630403527630,
+    "changeTime": 1630403527630,
+    "contentHash": "1daadf22b12ccfbd08d5617291a001b56d359bee",
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "ApexClass"
+  },
+  "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTestRuntimeError.cls-meta.xml": {
+    "sourcePath": "C:\\SFDX\\sfdxpoc\\force-app\\main\\default\\classes\\AccountControllerTestRuntimeError.cls-meta.xml",
+    "size": 179,
+    "modifiedTime": 1630081178770,
+    "changeTime": 1630081716730,
+    "contentHash": "463a780dc1b11f5d645b2a49558ed28551f48927",
     "isMetadataFile": true,
     "state": "u",
     "package": "force-app",
