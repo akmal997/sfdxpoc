@@ -29,9 +29,9 @@ node {
     //     properties([pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
     // }
 
-    withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
-        stage('Deploye Code') {
-            if (isUnix()) {
+    stage('Build Stage') {
+        // cmd to build package.xml based on source code
+        if (isUnix()) {
                 rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
             }else{
 		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
@@ -49,8 +49,63 @@ node {
 		}
 
 			println rc
-			
-			// need to pull out assigned username
+
+            if(isUnix()){
+              bs  = sh returnStatus: true, script: "${toolbelt}  force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master -d manifest\"
+            }else{
+              bs = bat returnStatus: true, script: "${toolbelt}  force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master -d manifest\""
+            }
+
+               if (bs != 0) { 
+		    println 'inside rc 0'
+		    error 'hub org authorization failed' 
+	    }
+		else{
+			println 'rc not 0'
+		}
+        	println rc
+    }
+    
+    withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
+
+         stage('Build Stage') {
+        // cmd to build package.xml based on source code
+        if (isUnix()) {
+                rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+            }else{
+		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
+		   // bat "${toolbelt} update"
+		    //bat "${toolbelt} auth:logout -u ${HUB_ORG} -p" 
+                 rc = bat returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --loglevel DEBUG --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+            }
+		
+            if (rc != 0) { 
+		    println 'inside rc 0'
+		    error 'hub org authorization failed' 
+	    }
+		else{
+			println 'rc not 0'
+		}
+
+			println rc
+
+            if(isUnix()){
+              bs  = sh returnStatus: true, script: "${toolbelt}  force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master -d manifest\"
+            }else{
+              bs = bat returnStatus: true, script: "${toolbelt}  force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master -d manifest\""
+            }
+
+               if (bs != 0) { 
+		    println 'inside rc 0'
+		    error 'hub org authorization failed' 
+	    }
+		else{
+			println 'rc not 0'
+		}
+        	println rc
+    }
+        stage('Deploye Code') {
+           // need to pull out assigned username
 			if (isUnix()) {
 				//rmsg = sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/. -u ${HUB_ORG}"
 				rmsg = sh returnStdout: true, script: "${toolbelt} force:source:deploy -x manifest/package.xml -u ${HUB_ORG}"

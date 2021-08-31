@@ -11,8 +11,8 @@ public class ContactControllerTest {
         
         Test.startTest();
             ContactController.getContactList();
-        //    ContactController.findContacts('Contact');
-        //   ContactController.getSingleContact();
+            ContactController.findContacts('Contact');
+            ContactController.getSingleContact();
         Test.stopTest();
     }
 
