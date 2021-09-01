@@ -48,7 +48,7 @@ node {
             if(isUnix()){
                  bs = sh returnStatus: true, script: "${toolbelt} force:source:convert -p /var/lib/jenkins/workspace/sfdxpocpipeline_master/force-app -d manifest/"
             }else{
-                bs = bat returnStatus: true, script: "${toolbelt} force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master\force-app -d manifest/"
+                bs = bat returnStatus: true, script: "${toolbelt} force:source:convert -p C:/Users/tfadmin/.jenkins/workspace/ines_Salesforcepocproject_master/force-app -d manifest/"
             }
 
             if (rc != 0) { 
