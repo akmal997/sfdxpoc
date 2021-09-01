@@ -82,12 +82,11 @@ node {
                         error 'Salesforce unit test run in test scratch org failed.'
                         }
                 }
-            }
              
-            deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
-                if(deleteOrg){
-                    error "Salesforce test scratch org deleting failed"
-                }
+                    deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
+                        if(deleteOrg){
+                            error "Salesforce test scratch org deleting failed"
+                        }
         }
 
         stage('Deploy Code') {
