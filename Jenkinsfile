@@ -72,15 +72,14 @@ node {
                     //     }
                     list = sh returnStatus: true, script: "${toolbelt} force:org:list"
                     status = sh returnStatus: true, script: "${toolbelt} force:source:status -u testScratchOrg"
-                    // pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u testScratchOrg"
-                    //     if (pushScourceCode != 0) {
-                    //     println pushScourceCode
-                    //     error 'Salesforce push to test scratch org failed.'
-                    //     }
+                    pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u testScratchOrg"
+                        if (pushScourceCode != 0) {
+                        println pushScourceCode
+                        error 'Salesforce push to test scratch org failed.'
+                        }
                     testResult = sh returnStatus: true, script: "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                         println testResult
                         if (testResult != 0) {
-                        //sh script: "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"  
                         error 'Salesforce unit test run in test scratch org failed.'
                         }
                 }
