@@ -65,7 +65,7 @@ node {
         }
         
         stage("UI Testing"){
-            createScratchOrg = command "${toolbelt} force:org:create -u ${HUB_ORG} --targetdevhubusername DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+            createScratchOrg = command "${toolbelt} force:org:create -v ${HUB_ORG} --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
                  if (createScratchOrg != 0) {
                     error 'Salesforce test scratch org creation failed.'
                 }
