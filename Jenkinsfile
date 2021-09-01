@@ -30,7 +30,6 @@ node {
 
         stage('Build Stage'){
              if (isUnix()) {
-                 logout = sh script: "${toolbelt} auth:logout -a"
                 rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -s -a DevHub"
             }else{
 		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
@@ -66,24 +65,25 @@ node {
         }
         
         stage("UI Testing"){
-            // createScratchOrg = command "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
-            //      if (createScratchOrg != 0) {
-            //         error 'Salesforce test scratch org creation failed.'
-            //     }
-                
                 if(isUnix()){
-                  list = sh returnStatus: true, script: "${toolbelt} force:org:list"
-              status = sh returnStatus: true, script: "${toolbelt} force:source:status -u test-jqs4nxfzxpml@example.com"
-            pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername test-jqs4nxfzxpml@example.com"
-                 if (pushScourceCode != 0) {
-                     println pushScourceCode
-                    error 'Salesforce push to test scratch org failed.'
+                    createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+                        if (createScratchOrg != 0) {
+                        error 'Salesforce test scratch org creation failed.'
+                        }
+                    list = sh returnStatus: true, script: "${toolbelt} force:org:list"
+                    status = sh returnStatus: true, script: "${toolbelt} force:source:status -u DevHub"
+                    pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u DevHub"
+                        if (pushScourceCode != 0) {
+                        println pushScourceCode
+                        error 'Salesforce push to test scratch org failed.'
+                        }
+                    testResult = command "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+                        if (testResult != 0) {
+                        error 'Salesforce unit test run in test scratch org failed.'
+                        }
                 }
-                }
-             testResult = command "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
-                 if (testResult != 0) {
-                     error 'Salesforce unit test run in test scratch org failed.'
-                }
+            }
+             
             deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
                 if(deleteOrg){
                     error "Salesforce test scratch org deleting failed"
