@@ -24,11 +24,6 @@ node {
         checkout scm
     }
 
-    //  stage('build triggers') {
-    //     // enabled CI
-    //     properties([pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
-    // }
-
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 
         stage('Build Stage'){
@@ -51,9 +46,9 @@ node {
 			println rc
 
             if(isUnix()){
-               //  bs = sh returnStatus: true, script: "${toolbelt} force:source:convert -p /var/lib/jenkins -d manifest\"
+                 bs = sh returnStatus: true, script: "${toolbelt} force:source:convert -p /var/lib/jenkins/workspace/sfdxpocpipeline_master/force-app -d manifest/"
             }else{
-                bs = bat returnStatus: true, script: "${toolbelt} force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master\force-app -d manifest\"
+                bs = bat returnStatus: true, script: "${toolbelt} force:source:convert -p C:\Users\tfadmin\.jenkins\workspace\ines_Salesforcepocproject_master\force-app -d manifest/"
             }
 
             if (rc != 0) { 
