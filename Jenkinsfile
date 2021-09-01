@@ -71,8 +71,8 @@ node {
             //     }
                 
                 if(isUnix()){
-                   sh, script: "${toolbelt} force:source:list"
-               sh, script: "${toolbelt} force:source:status -u testScratchOrg"
+                  list = sh returnStatus: true, script: "${toolbelt} force:source:list"
+              status = sh returnStatus: true, script: "${toolbelt} force:source:status -u test-jqs4nxfzxpml@example.com"
             pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername testScratchOrg"
                  if (pushScourceCode != 0) {
                     error 'Salesforce push to test scratch org failed.'
