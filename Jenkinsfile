@@ -5,6 +5,7 @@ node {
     def BUILD_NUMBER=env.BUILD_NUMBER
     def RUN_ARTIFACT_DIR="tests/${BUILD_NUMBER}"
     def SFDC_USERNAME
+    def TEST_LEVEL= 'RunLocalTests'
 
     def HUB_ORG=env.HUB_ORG_DH
     def SFDC_HOST = env.SFDC_HOST_DH
@@ -29,12 +30,12 @@ node {
 
         stage('Build Stage'){
              if (isUnix()) {
-                rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+                rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -a DevHub"
             }else{
 		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
 		   // bat "${toolbelt} update"
 		    //bat "${toolbelt} auth:logout -u ${HUB_ORG} -p" 
-                 rc = bat returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --loglevel DEBUG --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+                 rc = bat returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --loglevel DEBUG --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -a DevHub"
             }
 		
             if (rc != 0) { 
@@ -63,6 +64,21 @@ node {
 			
         }
         
+        stage("UI Testing"){
+            createScratchOrg = command "${toolbelt} force:org:create --targetdevhubusername DevHub --setdefaultusername --definitionfile config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+                 if (createScratchOrg != 0) {
+                    error 'Salesforce test scratch org creation failed.'
+                }
+            pushScourceCode = command "${toolbelt} force:source:push --targetusername testScratchOrg"
+                 if (pushScourceCode != 0) {
+                    error 'Salesforce push to test scratch org failed.'
+                }
+             testResult = command "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+                 if (testResult != 0) {
+                     error 'Salesforce unit test run in test scratch org failed.'
+                }
+        }
+
         stage('Deploye Code') {
 			// need to pull out assigned username
 			if (isUnix()) {
