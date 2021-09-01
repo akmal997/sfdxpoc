@@ -69,6 +69,8 @@ node {
             //      if (createScratchOrg != 0) {
             //         error 'Salesforce test scratch org creation failed.'
             //     }
+                script: "${toolbelt} force:source:list"
+                script: "${toolbelt} force:source:status -u testScratchOrg"
             pushScourceCode = command "${toolbelt} force:source:push --targetusername testScratchOrg"
                  if (pushScourceCode != 0) {
                     error 'Salesforce push to test scratch org failed.'
