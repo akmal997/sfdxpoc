@@ -66,13 +66,13 @@ node {
         
         stage("UI Testing"){
                 if(isUnix()){
-                    createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
-                        if (createScratchOrg != 0) {
-                        error 'Salesforce test scratch org creation failed.'
-                        }
+                    // createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+                    //     if (createScratchOrg != 0) {
+                    //     error 'Salesforce test scratch org creation failed.'
+                    //     }
                     list = sh returnStatus: true, script: "${toolbelt} force:org:list"
-                    status = sh returnStatus: true, script: "${toolbelt} force:source:status -u DevHub"
-                    pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u DevHub"
+                    status = sh returnStatus: true, script: "${toolbelt} force:source:status -u testScratchOrg"
+                    pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u testScratchOrg"
                         if (pushScourceCode != 0) {
                         println pushScourceCode
                         error 'Salesforce push to test scratch org failed.'
