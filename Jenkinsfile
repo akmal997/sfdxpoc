@@ -30,6 +30,7 @@ node {
 
         stage('Build Stage'){
              if (isUnix()) {
+                 logout = sh script: "${toolbelt} auth:logout -a"
                 rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -s -a DevHub"
             }else{
 		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
@@ -73,8 +74,9 @@ node {
                 if(isUnix()){
                   list = sh returnStatus: true, script: "${toolbelt} force:org:list"
               status = sh returnStatus: true, script: "${toolbelt} force:source:status -u test-jqs4nxfzxpml@example.com"
-            pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername testScratchOrg"
+            pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername test-jqs4nxfzxpml@example.com"
                  if (pushScourceCode != 0) {
+                     println pushScourceCode
                     error 'Salesforce push to test scratch org failed.'
                 }
                 }
