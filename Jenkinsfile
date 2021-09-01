@@ -71,7 +71,7 @@ node {
             //     }
                 
                 if(isUnix()){
-                  list = sh returnStatus: true, script: "${toolbelt} force:source:list"
+                  list = sh returnStatus: true, script: "${toolbelt} force:org:list"
               status = sh returnStatus: true, script: "${toolbelt} force:source:status -u test-jqs4nxfzxpml@example.com"
             pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername testScratchOrg"
                  if (pushScourceCode != 0) {
