@@ -71,9 +71,11 @@ node {
             //     }
                 script: "${toolbelt} force:source:list"
                 script: "${toolbelt} force:source:status -u testScratchOrg"
-            pushScourceCode = command "${toolbelt} force:source:push --targetusername testScratchOrg"
+                if(isUnix()){
+            pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push --targetusername testScratchOrg"
                  if (pushScourceCode != 0) {
                     error 'Salesforce push to test scratch org failed.'
+                }
                 }
              testResult = command "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                  if (testResult != 0) {
