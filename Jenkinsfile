@@ -65,7 +65,7 @@ node {
         }
         
         stage("UI Testing"){
-            createScratchOrg = command "${toolbelt} force:org:create --targetdevhubusername DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+            createScratchOrg = command "${toolbelt} force:org:create -u ${HUB_ORG} --targetdevhubusername DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
                  if (createScratchOrg != 0) {
                     error 'Salesforce test scratch org creation failed.'
                 }
@@ -76,6 +76,10 @@ node {
              testResult = command "${toolbelt} force:apex:test:run --targetusername testScratchOrg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                  if (testResult != 0) {
                      error 'Salesforce unit test run in test scratch org failed.'
+                }
+            deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
+                if(deleteOrg){
+                    error "Salesforce test scratch org deleting failed"
                 }
         }
 
