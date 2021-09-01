@@ -30,12 +30,12 @@ node {
 
         stage('Build Stage'){
              if (isUnix()) {
-                rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -d -a DevHub"
+                rc = sh returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -s -a DevHub"
             }else{
 		    //bat "${toolbelt} plugins:install salesforcedx@49.5.0"
 		   // bat "${toolbelt} update"
 		    //bat "${toolbelt} auth:logout -u ${HUB_ORG} -p" 
-                 rc = bat returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --loglevel DEBUG --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -d  -a DevHub"
+                 rc = bat returnStatus: true, script: "${toolbelt} auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --loglevel DEBUG --setdefaultdevhubusername --instanceurl ${SFDC_HOST} -s -a DevHub"
             }
 		
             if (rc != 0) { 
@@ -65,10 +65,10 @@ node {
         }
         
         stage("UI Testing"){
-            createScratchOrg = command "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
-                 if (createScratchOrg != 0) {
-                    error 'Salesforce test scratch org creation failed.'
-                }
+            // createScratchOrg = command "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
+            //      if (createScratchOrg != 0) {
+            //         error 'Salesforce test scratch org creation failed.'
+            //     }
             pushScourceCode = command "${toolbelt} force:source:push --targetusername testScratchOrg"
                  if (pushScourceCode != 0) {
                     error 'Salesforce push to test scratch org failed.'
