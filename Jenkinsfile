@@ -66,10 +66,10 @@ node {
         
         stage("UI Testing"){
                 if(isUnix()){
-                    // createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 1"
-                    //     if (createScratchOrg != 0) {
-                    //     error 'Salesforce test scratch org creation failed.'
-                    //     }
+                    createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 30"
+                        if (createScratchOrg != 0) {
+                        error 'Salesforce test scratch org creation failed.'
+                        }
                     list = sh returnStatus: true, script: "${toolbelt} force:org:list"
                     status = sh returnStatus: true, script: "${toolbelt} force:source:status -u testScratchOrg"
                     pushScourceCode = sh returnStatus: true, script: "${toolbelt} force:source:push -u testScratchOrg"
@@ -82,12 +82,13 @@ node {
                         if (testResult != 0) {
                         error 'Salesforce unit test run in test scratch org failed.'
                         }
+
                 }
              
-                    deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
-                        if(deleteOrg){
-                            error "Salesforce test scratch org deleting failed"
-                        }
+                    // deleteOrg =  command "${toolbelt} force:org:delete -u testScratchOrg "
+                    //     if(deleteOrg){
+                    //         error "Salesforce test scratch org deleting failed"
+                    //     }
         }
 
         stage('Deploy Code') {
