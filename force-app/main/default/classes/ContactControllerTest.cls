@@ -8,6 +8,7 @@ public class ContactControllerTest {
         insert Con1;
         insert Con2;
         insert Con3;
+    
         
         Test.startTest();
             ContactController.getContactList();

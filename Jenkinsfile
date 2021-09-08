@@ -26,6 +26,10 @@ node {
         properties([pipelineTriggers([githubPush()])])
     }
 
+    stage('Code Scan'){
+        
+    }
+
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 
         stage('Build Stage'){
