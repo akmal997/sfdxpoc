@@ -29,8 +29,8 @@ node {
     }
 
     stage('Code Scan'){
-         withSonarQubeEnv(credentialsId: '4d077ee1-2018-46de-8037-605411dbcdfc', installationName: 'SonarCloud') {
-                    sh " ${scannerHome}/bin/sonar-scanner -Dsonar.login=admin -Dsonar.password=Akmal@khan1 -Dsonar.projectKey=akmal997_sfdxpoc -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io "
+         withSonarQubeEnv('SonarCloud') {
+                    sh " ${scannerHome}/bin/sonar-scanner -Dsonar.login=admin -Dsonar.password=Akmal@khan1 -Dsonar.projectKey=akmal997_sfdxpoc -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.analysis.mode="
                 }
     }
 
