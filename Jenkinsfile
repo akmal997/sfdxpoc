@@ -29,7 +29,13 @@ node {
     }
 
     stage('Code Scan'){
-        
+         withSonarQubeEnv('SonarCloud') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.organization=akmal997 
+														 -Dsonar.projectKey=akmal997_sfdxpoc 
+														 -Dsonar.sources=.
+														 -Dsonar.host.url=https://sonarcloud.io
+														 -Dsonar.login=a68cd6fe64dba200dd468f5c1bc44980aa05e273"
+                }
     }
 
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
