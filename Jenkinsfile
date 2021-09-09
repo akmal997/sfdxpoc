@@ -30,7 +30,7 @@ node {
 
     stage('Code Scan'){
          withSonarQubeEnv('SonarCloud') {
-             print
+             println ${sonarCloud}
                     sh " ${sonarCloud}/bin/sonar-scanner \
                     -Dsonar.login=admin \
                     -Dsonar.password=Akmal@khan1 \
