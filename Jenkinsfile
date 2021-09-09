@@ -36,7 +36,7 @@ node {
                     -Dsonar.login=admin \
                     -Dsonar.password=Akmal@khan1 \
                     -Dsonar.projectKey=akmal997_sfdxpoc \
-                    -Dsonar.sources= /var \
+                    -Dsonar.sources= . \
                      -Dsonar.host.url=https://sonarcloud.io \
                       "
                 }
