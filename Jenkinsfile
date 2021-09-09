@@ -34,6 +34,7 @@ node {
              println 'sonarCloud'
                     sh " ${sonarCloud}/bin/sonar-scanner \
                     -Dsonar.login=a68cd6fe64dba200dd468f5c1bc44980aa05e273 \
+                    -Dsonar.organization=akmal997 \
                     -Dsonar.projectKey=akmal997_sfdxpoc \
                     -Dsonar.sources=/var/lib/jenkins/workspace/sfdxpocpipeline_master \
                      -Dsonar.host.url=https://sonarcloud.io \
