@@ -31,9 +31,9 @@ node {
     stage('Code Scan'){
          withSonarQubeEnv('SonarCloud') {
                     sh "${scannerHome}/bin/sonar-scanner 
-														 -Dsonar.projectKey=akmal997_sfdxpoc \
-														 -Dsonar.sources=. \
-														 -Dsonar.host.url=https://sonarcloud.io\git \
+														 -Dsonar.projectKey=akmal997_sfdxpoc 
+														 -Dsonar.sources=. 
+														 -Dsonar.host.url=https://sonarcloud.io
 														 -Dsonar.login=a68cd6fe64dba200dd468f5c1bc44980aa05e273"
                 }
     }
