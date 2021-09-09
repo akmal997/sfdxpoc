@@ -31,7 +31,7 @@ node {
     stage('Code Scan'){
          withSonarQubeEnv('SonarCloud') {
              if(isUnix()){
-             println ${sonarCloud}
+             println 'sonarCloud'
                     sh " ${sonarCloud}/bin/sonar-scanner \
                     -Dsonar.login=admin \
                     -Dsonar.password=Akmal@khan1 \
