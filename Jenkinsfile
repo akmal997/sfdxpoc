@@ -18,7 +18,7 @@ node {
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
     def toolbelt = tool 'toolbelt'
-    def sonarCloud= tool 'sonerCloud'
+    def sonarCloud= tool 'sonarCloud'
     println toolbelt
     println  sonarCloud
 
