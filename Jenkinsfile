@@ -30,6 +30,7 @@ node {
 
     stage('Code Scan'){
          withSonarQubeEnv('SonarCloud') {
+             if(isUnix()){
              println ${sonarCloud}
                     sh " ${sonarCloud}/bin/sonar-scanner \
                     -Dsonar.login=admin \
@@ -39,6 +40,7 @@ node {
                      -Dsonar.host.url=https://sonarcloud.io \
                       "
                 }
+         }
     }
 
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
