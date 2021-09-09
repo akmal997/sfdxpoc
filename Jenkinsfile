@@ -30,7 +30,13 @@ node {
 
     stage('Code Scan'){
          withSonarQubeEnv('SonarCloud') {
-                    sh " ${scannerHome}/bin/sonar-scanner -Dsonar.login=admin -Dsonar.password=Akmal@khan1 -Dsonar.projectKey=akmal997_sfdxpoc -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io "
+                    sh " ${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.login=admin \
+                    -Dsonar.password=Akmal@khan1 \
+                    -Dsonar.projectKey=akmal997_sfdxpoc \
+                    -Dsonar.sources=. \
+                     -Dsonar.host.url=https://sonarcloud.io \
+                      "
                 }
     }
 
