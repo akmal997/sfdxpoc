@@ -18,7 +18,9 @@ node {
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
     def toolbelt = tool 'toolbelt'
+    def sonarCloud= tool 'sonerCloud'
     println toolbelt
+    println  sonarCloud
 
     stage('checkout source') {
         // when running in multi-branch job, one must issue this command
