@@ -27,7 +27,6 @@ node {
         checkout scm
         properties([pipelineTriggers([githubPush()])])
     }
-
     // stage('Code Scan'){
     //      withSonarQubeEnv('SonarCloud') {
     //          if(isUnix()){
@@ -124,3 +123,8 @@ node {
         }
     }
 }
+
+
+
+
+
