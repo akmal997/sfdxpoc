@@ -64,7 +64,7 @@ node {
 			println rc
 
             if(isUnix()){
-                 bs = sh returnStatus: true, script: "${toolbelt} force:source:convert -p /var/lib/jenkins/workspace/sfdxpocpipeline_master/force-app -d manifest/"
+                 bs = sh returnStatus: true, script: "${toolbelt} force:source:convert -p /var/lib/jenkins/workspace/SFDXdemo_master-linux/force-app -d manifest/"
             }else{
                 bs = bat returnStatus: true, script: "${toolbelt} force:source:convert -p C:/Users/tfadmin/.jenkins/workspace/ines_Salesforcepocproject_master/force-app -d manifest/"
             }
@@ -82,7 +82,7 @@ node {
         
         stage("UI Testing"){
                 if(isUnix()){
-                    createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/sfdxpocpipeline_master/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 30"
+                    createScratchOrg = sh returnStatus: true, script: "${toolbelt} force:org:create -v DevHub --setdefaultusername --definitionfile /var/lib/jenkins/workspace/SFDXdemo_master-linux/config/project-scratch-def.json --setalias testScratchOrg --wait 10 --durationdays 30"
                         if (createScratchOrg != 0) {
                         error 'Salesforce test scratch org creation failed.'
                         }
