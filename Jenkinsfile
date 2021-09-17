@@ -17,7 +17,10 @@ node {
     println HUB_ORG
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
-	println "${JOB_NAME}_${BRANCH_NAME}"
+	println "jenkins variables"
+	println "${JOB_NAME}"
+	println "${BRANCH_NAME}"
+	
     def toolbelt = tool 'toolbelt'
     //def sonarCloud= tool 'sonarCloud'
     println toolbelt
