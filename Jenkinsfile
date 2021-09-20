@@ -20,6 +20,7 @@ node {
 	println "jenkins variables"
 	println "${JOB_NAME}"
 	println "${BRANCH_NAME}"
+	println "${ITEM_FULL_NAME}"
 	
     def toolbelt = tool 'toolbelt'
     //def sonarCloud= tool 'sonarCloud'
